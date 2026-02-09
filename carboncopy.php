@@ -19,6 +19,13 @@ function carboncopy_civicrm_enable(): void {
 
 function carboncopy_civicrm_alterMailParams(&$params, $context): void {
   if ($params['contactId']) {
+    $contactId = $params['contactId'];
+  }
+  else {
+    $contactId = CRM_Carboncopy_Contact::getContactIdFromEmail($params['job_id'], $params['toEmail']);
+  }
+
+  if ($contactId) {
     $params['cc'] = CRM_Carboncopy_Contact::getCcToInclude($params['contactId'], $params['cc'] ?? '');
     $params['bcc'] = CRM_Carboncopy_Contact::getBccToInclude($params['contactId'], $params['bcc'] ?? '');
   }
