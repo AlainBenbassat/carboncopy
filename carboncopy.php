@@ -26,7 +26,7 @@ function carboncopy_civicrm_alterMailParams(&$params, $context): void {
   }
 
   if ($contactId) {
-    $params['cc'] = CRM_Carboncopy_Contact::getCcToInclude($params['contactId'], $params['cc'] ?? '');
-    $params['bcc'] = CRM_Carboncopy_Contact::getBccToInclude($params['contactId'], $params['bcc'] ?? '');
+    $params['cc'] = CRM_Carboncopy_Contact::getCcToInclude($contactId, $params['cc'] ?? '');
+    $params['bcc'] = CRM_Carboncopy_Contact::getBccToInclude($contactId, $params['bcc'] ?? '');
   }
 }
