@@ -18,7 +18,7 @@ function carboncopy_civicrm_enable(): void {
 }
 
 function carboncopy_civicrm_alterMailParams(&$params, $context): void {
-  if ($params['contactId']) {
+  if (!empty($params['contactId'])) {
     $contactId = $params['contactId'];
   }
   else {
