@@ -1,19 +1,31 @@
-# Carbon Copy
+# Carbon Copy (CC/BCC) Extension
 
-Some contacts want you to cc or bcc other people whenever you mail them.
-This can be to an alternative email address, or to an assistant, another colleague, or a parent.
+Some contacts require that specific individuals—such as an assistant, a colleague, or a parent—be included in all correspondence. The **Carbon Copy** extension automates this process by applying CC and BCC rules globally based on the contact’s record.
 
-## Location Types cc and bcc
+---
 
-When you enable this extension, two new location types are added:
-- CC To
-- BCC To
+## How it Works: New Location Types
 
-Add an unlimited number of cc or bcc email addresses to your contacts.
+Upon installation, the extension adds two new **Location Types** to your CiviCRM instance:
 
-Every time an email is sent to one or more contacts, CiviCRM will look up if there are cc or bcc address to add to the mailing.
+* **CC To**: Any email address assigned this type will be automatically added to the `CC` field.
+* **BCC To**: Any email address assigned this type will be automatically added to the `BCC` field.
 
-## Token Replacement
+You can add an unlimited number of these location-specific email addresses to any contact record.
 
-Please note that the tokens in your email relate to the primary recipient. A contact included a cc to an email will therefore see the values of the primary recipient.
+---
 
+## Automated Routing
+
+The extension monitors outgoing mail across the entire system. Whenever an email is sent to a primary recipient, CiviCRM checks for these specific location types and appends them to the mail headers. This applies to:
+
+1.  **Transactional Mail**: Individual emails, receipts, and workflow notifications.
+2.  **Mass Mailing**: Bulk mailings sent via CiviMail or Mosaico.
+
+---
+
+## Token Replacement & Privacy
+
+> **Token Context:** All tokens within the email body (e.g., `{contact.first_name}`) resolve to the **Primary Recipient**.
+
+Because CC/BCC recipients are viewing a copy of the primary recipient's mail, they will see the primary contact's data. Please ensure that the content of your automated emails is appropriate for these additional parties to view.
